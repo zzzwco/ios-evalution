@@ -1,8 +1,8 @@
 //
-//  main.swift
+//  Utils.swift
 //  swift-language
 //
-//  Created by zzzwco on 2022/6/28.
+//  Created by zzzwco on 2022/7/13.
 //
 //  Copyright (c) 2021 zzzwco <zzzwco@outlook.com>
 //
@@ -27,16 +27,23 @@
 
 import Foundation
 
-// MARK: - Optional shorthand
-
-let s1: String? = "s1"
-
-if let s1 {
-  print(s1)
+public enum PrintType: String {
+  case `default` = "🍺🍺🍺"
+  case warning = "⚠️⚠️⚠️"
+  case error = "❌❌❌"
 }
 
-guard let s1 else {
-  exit(0)
+public func printLog<T>(
+  _ msg: T..., file: String = #file, method: String = #function,
+  line: Int = #line, printType: PrintType = .default
+) {
+  #if DEBUG
+  let msg = msg.enumerated().map { i, v in
+    "\(v)\n"
+  }.joined()
+  let content = "\(Date()) \((file as NSString).lastPathComponent)[\(line)], \(method): \n\(msg)\n"
+  let rawValue = printType.rawValue
+  print("\(rawValue) \(content)")
+  #endif
 }
-print(s1)
 

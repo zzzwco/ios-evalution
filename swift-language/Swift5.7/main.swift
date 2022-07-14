@@ -1,8 +1,8 @@
 //
-//  HomeView.swift
-//  Lab
+//  main.swift
+//  swift-language
 //
-//  Created by zzzwco on 2022/6/29.
+//  Created by zzzwco on 2022/6/28.
 //
 //  Copyright (c) 2021 zzzwco <zzzwco@outlook.com>
 //
@@ -25,35 +25,28 @@
 //  SOFTWARE.
 //
 
-import SwiftUI
+import Foundation
 
-struct HomeView: View {
-  
-  @State private var path: [Color] = []
-  let colors: [Color] = [.purple, .pink, .orange]
-  @State private var selection: Color? = nil
-  
-  var body: some View {
-  #if os(iOS)
-    Text("Hello")
-  #else
-    NavigationSplitView {
-      List(colors, id: \.self, selection: $selection) { color in
-        NavigationLink(color.description, value: color)
-      }
-    } detail: {
-      if let color = selection {
-        color
-      } else {
-        Text("Pick a color")
-      }
-    }
-  #endif
-  }
+// MARK: - Optional shorthand
+
+printLog("Optional shorthand")
+
+let s1: String? = "s1"
+
+if let s1 {
+  print(s1)
 }
 
-struct HomeView_Previews: PreviewProvider {
-  static var previews: some View {
-    HomeView()
-  }
+guard let s1 else {
+  exit(0)
 }
+print(s1)
+
+// MARK: - Stronger opaque types
+
+
+
+// MARK: - Lightweight same-type requirements for primary associated types
+
+
+
