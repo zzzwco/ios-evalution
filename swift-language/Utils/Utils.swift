@@ -28,7 +28,8 @@
 import Foundation
 
 public enum PrintType: String {
-  case `default` = "🍺🍺🍺"
+  case `default` = ""
+  case section = "🍺🍺🍺"
   case warning = "⚠️⚠️⚠️"
   case error = "❌❌❌"
 }
