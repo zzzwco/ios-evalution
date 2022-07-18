@@ -138,6 +138,34 @@ printLog("Regex-powered string processing algorithms", printType: .section)
 printLog(s.replacing(/[Ss]tay/, with: "be"))
 printLog(s.contains(/\ foo.+/))
 
+// MARK: - Clock, Instant, and Duration
+
+printLog("Clock, Instant, and Duration", printType: .section)
+
+// MARK: Clock
+
+let clock = ContinuousClock()
+let elapsed = clock.measure {
+  for _ in 0..<999999 {}
+}
+printLog("Loop duration: \(elapsed)")
+
+func delayWork() async throws {
+  // tolerance 为容差，默认为 nil
+  // 这里表示任务会睡眠 0.5 至 1 秒
+  let elapsed = try await clock.measure {
+    try await Task.sleep(until: .now + .seconds(0.5), tolerance: .seconds(0.5), clock: .continuous)
+  }
+  printLog("Sleep duration: \(elapsed)")
+  printLog("Time is up, keep working...")
+}
+
+try await delayWork()
+
+// MARK: Instant
+
+// MARK: Duration
+
 
 // MARK: - Optional shorthand
 
