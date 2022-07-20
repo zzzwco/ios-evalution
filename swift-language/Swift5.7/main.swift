@@ -27,7 +27,7 @@
 
 import Foundation
 import RegexBuilder
-
+import SwiftUI
 
 // https://github.com/apple/swift/blob/main/CHANGELOG.md
 
@@ -62,7 +62,7 @@ for match in matches1 {
   printLog(s[l..<r])
 }
 
-// MARK: - Regex builder DSL
+// MARK: Regex builder DSL
 
 printLog("Regex builder DSL", printType: .section)
 
@@ -99,7 +99,7 @@ if let matches3 = try regex3.wholeMatch(in: s) {
   printLog(matches3[ref1], matches3[ref2])
 }
 
-// MARK: - Regex Literals
+// MARK: Regex Literals
 
 printLog("Regex Literals", printType: .section)
 
@@ -131,7 +131,7 @@ if let matches6 = try regex6.wholeMatch(in: s) {
   printLog(matches6.1, matches6.2)
 }
 
-// MARK: - Regex-powered string processing algorithms
+// MARK: Regex-powered string processing algorithms
 
 printLog("Regex-powered string processing algorithms", printType: .section)
 
@@ -141,8 +141,6 @@ printLog(s.contains(/\ foo.+/))
 // MARK: - Clock, Instant, and Duration
 
 printLog("Clock, Instant, and Duration", printType: .section)
-
-// MARK: Clock
 
 let clock = ContinuousClock()
 let elapsed = clock.measure {
@@ -162,10 +160,71 @@ func delayWork() async throws {
 
 try await delayWork()
 
-// MARK: Instant
+// MARK: - Opaque Types
 
-// MARK: Duration
+func tuple(_ v1: some View, _ v2: some View) -> (some View, some View) {
+  (v1, v2)
+}
 
+// MARK: - Lightweight same-type requirements for primary associated types
+
+//func compare<C1: Collection, C2: Collection>(_ c1: C1, _ c2: C2) -> Bool
+//where C1.Element == C2.Element, C1.Element: Equatable {
+//  if c1.count != c2.count { return false }
+//  for i in 0..<c1.count {
+//    let v1 = c1[c1.index(c1.startIndex, offsetBy: i)]
+//    let v2 = c2[c2.index(c2.startIndex, offsetBy: i)]
+//    if v1 != v2 {
+//      return false
+//    }
+//  }
+//  return true
+//}
+
+func compare<E: Equatable>(_ c1: some Collection<E>, _ c2: some Collection<E>) -> Bool {
+  if c1.count != c2.count { return false }
+  for i in 0..<c1.count {
+    let v1 = c1[c1.index(c1.startIndex, offsetBy: i)]
+    let v2 = c2[c2.index(c2.startIndex, offsetBy: i)]
+    if v1 != v2 {
+      return false
+    }
+  }
+  return true
+}
+
+let c1: [Int] = [1, 2, 3]
+let c2: Set<Int> = [1, 2, 3]
+let ans = compare(c1, c2) // true
+printLog(ans)
+
+//some P
+//T where T: P
+
+//some P<V>
+//T where T: P, T.E: V
+
+// MARK: - Existential Types
+
+// MARK: Implicitly Opened Existentials=
+
+protocol P {
+  associatedtype A
+  func getA() -> A
+}
+
+func takeP<T: P>(_ value: T) { }
+
+func test(p: any P) {
+  // error: protocol 'P' as a type cannot conform to itself
+  takeP(p)
+}
+
+// MARK: Constrained Existential Types
+
+func mapNumbers(_ c: any Collection<Int>) -> [Int] {
+  c.map { $0 }
+}
 
 // MARK: - Optional shorthand
 
