@@ -31,6 +31,53 @@ import SwiftUI
 
 // https://github.com/apple/swift/blob/main/CHANGELOG.md
 
+// MARK: - Optional shorthand
+
+printLog("Optional shorthand", printType: .section)
+
+let s1: String? = "s1"
+
+if let s1 {
+  printLog(s1)
+}
+
+guard let s1 else {
+  exit(0)
+}
+printLog(s1)
+
+// MARK: - More powerful type inference
+
+// MARK: Type inference from default expressions
+
+func compute<C: Collection>(_ values: C = [0, 1, 2]) { }
+
+compute([1, 2, 3]) // [Int]
+compute(["a", "b", "c"]) // [String]
+compute([1, "2", {}]) // [Any]
+
+// MARK: Enable multi-statement closure parameter/result type inference
+
+let _ = [-1, 0, 1].map { v -> String in
+  if v < 0 {
+    return "negative"
+  } else if v > 0 {
+    return "positive"
+  } else {
+    return "zero"
+  }
+}
+
+let _ = [-1, 0, 1].map {
+  if $0 < 0 {
+    return "negative"
+  } else if $0 > 0 {
+    return "positive"
+  } else {
+    return "zero"
+  }
+}
+
 // MARK: - Clarify the Execution of Non-Actor-Isolated Async Functions
 
 class C { }
@@ -226,26 +273,6 @@ func mapNumbers(_ c: any Collection<Int>) -> [Int] {
   c.map { $0 }
 }
 
-// MARK: - Optional shorthand
-
-printLog("Optional shorthand", printType: .section)
-
-let s1: String? = "s1"
-
-if let s1 {
-  printLog(s1)
-}
-
-guard let s1 else {
-  exit(0)
-}
-printLog(s1)
-
-// MARK: - Stronger opaque types
-
-
-
-// MARK: - Lightweight same-type requirements for primary associated types
-
+// MARK: - Distributed Actor Isolation
 
 
