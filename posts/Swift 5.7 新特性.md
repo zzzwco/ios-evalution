@@ -1,3 +1,5 @@
+`2022/07/15` ` Xcode 14 beta 3`  ` Swift 5.7`
+
 # 简化的可选绑定（[SE-0345](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md)）
 
 对可选类型解包时无需显式绑定，写法更简洁：
