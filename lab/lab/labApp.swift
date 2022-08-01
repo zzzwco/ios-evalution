@@ -12,7 +12,7 @@ struct LabApp: App {
   
   var body: some Scene {
     WindowGroup {
-      HomeView()
+      MainWindow()
     }
   }
 }

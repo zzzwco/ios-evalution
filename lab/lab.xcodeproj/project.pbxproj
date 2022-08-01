@@ -14,7 +14,9 @@
 		329BB4FE286BDB9200D00AB1 /* LabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BB4FD286BDB9200D00AB1 /* LabTests.swift */; };
 		329BB508286BDB9200D00AB1 /* LabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BB507286BDB9200D00AB1 /* LabUITests.swift */; };
 		329BB50A286BDB9200D00AB1 /* LabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BB509286BDB9200D00AB1 /* LabUITestsLaunchTests.swift */; };
-		329BB517286BDBE900D00AB1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BB516286BDBE900D00AB1 /* HomeView.swift */; };
+		32C2D68028977AA80046D2CF /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D67F28977AA70046D2CF /* MainWindow.swift */; };
+		32C2D68228977AB00046D2CF /* iOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D68128977AB00046D2CF /* iOSWindow.swift */; platformFilter = ios; };
+		32C2D68428977AB60046D2CF /* macOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D68328977AB60046D2CF /* macOSWindow.swift */; platformFilters = (macos, ); };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +48,9 @@
 		329BB503286BDB9200D00AB1 /* LabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		329BB507286BDB9200D00AB1 /* LabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabUITests.swift; sourceTree = "<group>"; };
 		329BB509286BDB9200D00AB1 /* LabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		329BB516286BDBE900D00AB1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		32C2D67F28977AA70046D2CF /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		32C2D68128977AB00046D2CF /* iOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWindow.swift; sourceTree = "<group>"; };
+		32C2D68328977AB60046D2CF /* macOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				329BB4E6286BDB8E00D00AB1 /* LabApp.swift */,
-				329BB516286BDBE900D00AB1 /* HomeView.swift */,
+				32C2D67F28977AA70046D2CF /* MainWindow.swift */,
+				32C2D68128977AB00046D2CF /* iOSWindow.swift */,
+				32C2D68328977AB60046D2CF /* macOSWindow.swift */,
 				329BB4EF286BDB9200D00AB1 /* Assets.xcassets */,
 				329BB4F1286BDB9200D00AB1 /* Lab.entitlements */,
 				329BB4EA286BDB8F00D00AB1 /* Lab.xcdatamodeld */,
@@ -262,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				329BB517286BDBE900D00AB1 /* HomeView.swift in Sources */,
+				32C2D68028977AA80046D2CF /* MainWindow.swift in Sources */,
+				32C2D68428977AB60046D2CF /* macOSWindow.swift in Sources */,
 				329BB4E7286BDB8E00D00AB1 /* LabApp.swift in Sources */,
+				32C2D68228977AB00046D2CF /* iOSWindow.swift in Sources */,
 				329BB4EC286BDB8F00D00AB1 /* Lab.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
