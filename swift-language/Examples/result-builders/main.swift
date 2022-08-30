@@ -1,8 +1,8 @@
 //
-//  iOSWindow.swift
-//  Lab
+//  main.swift
+//  swift-language
 //
-//  Created by zzzwco on 2022/8/1.
+//  Created by zzzwco on 2022/8/30.
 //
 //  Copyright (c) 2021 zzzwco <zzzwco@outlook.com>
 //
@@ -25,30 +25,7 @@
 //  SOFTWARE.
 //
 
-import SwiftUI
+import Foundation
 
-struct iOSWindow: View {struct ToggleStates {
-  var oneIsOn: Bool = false
-  var twoIsOn: Bool = true
-}
-@State private var toggleStates = ToggleStates()
-@State private var topExpanded: Bool = true
+print("Hello, World!")
 
-var body: some View {
-  List {
-    DisclosureGroup("Items", isExpanded: $topExpanded) {
-      Toggle("Toggle 1", isOn: $toggleStates.oneIsOn)
-      Toggle("Toggle 2", isOn: $toggleStates.twoIsOn)
-      DisclosureGroup("Sub-items") {
-        Text("Sub-item 1")
-      }
-    }
-  }
-}
-}
-
-struct iOSWindow_Previews: PreviewProvider {
-  static var previews: some View {
-    iOSWindow()
-  }
-}
